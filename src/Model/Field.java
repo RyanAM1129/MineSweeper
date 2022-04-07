@@ -1,6 +1,6 @@
 package Model;
 
 public interface Field {
-    public char[][]
+    public void buildField();
     public String toString();
 }
