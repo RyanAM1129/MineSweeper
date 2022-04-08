@@ -1,13 +1,12 @@
 package Controller;
 
-public class FieldSweeper {
-    private final int myN, myM;
-    private final char[][] myMineField;
+import Model.Field;
+import Model.MineField;
 
-    public FieldSweeper(final int theN, final int theM) {
-        myN = theN;
-        myM = theM;
-        //temp code
-        myMineField = new char[myN][myM];
+public class FieldSweeper {
+    private final MineField myMineField;
+
+    public FieldSweeper(MineField theMineField) {
+        myMineField = theMineField;
     }
 }
