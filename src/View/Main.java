@@ -15,7 +15,7 @@ public class Main {
         MineField myMineField;
         //Stores N in index '0' and 'M' in index 1
         int[] theNAndM = converter.convertFieldSize(console.nextLine());
-        while (theNAndM[0] !=0 && theNAndM[1] != 0) {
+        while (theNAndM[0] != 0 && theNAndM[1] != 0) {
             myMineField = new MineField(theNAndM[0], theNAndM[1]);
             System.out.println(myMineField);
 

@@ -5,17 +5,34 @@ import Controller.Converter;
 import java.util.Scanner;
 
 public class CoveredField {
-    int[][] myField;
+    final int myN, myM;
+    char[][] myField;
 
     public CoveredField(final int theN, final int theM) {
-        myField = new int[theN][theM];
+        myN = theN;
+        myM = theM;
+        myField = new char[myN][myM];
         Scanner myConsole = new Scanner(System.in);
         String myCurrentLine;
-        int[] myCurrentRow;
+        char[] myCurrentRow;
         Converter myConverter = new Converter();
 
         for (int i = 0; i < theN; i++) {
-            myCurrentRow =
+            myCurrentLine = myConsole.nextLine();
+            myCurrentRow = myConverter.convertRow(myCurrentLine);
+            myField[i] = myCurrentRow;
         }
+    }
+
+    public char getSpot(final int theX, final int theY) {
+        return myField[theX][theY];
+    }
+
+    public int getN() {
+        return myN;
+    }
+
+    public int getM() {
+        return myM;
     }
 }
