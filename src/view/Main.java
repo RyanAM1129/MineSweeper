@@ -1,12 +1,20 @@
-package View;
+package view;
 
-import Controller.Converter;
-import Model.MineField;
+import controller.Converter;
+import model.MineField;
 
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public final class Main {
+    /**
+     * No arg Constructor.
+     */
+    private Main() { }
+    /**
+     * Main method for MineSweeper.
+     * @param args command arguments for main method.
+     */
+    public static void main(final String[] args) {
         Scanner console = new Scanner(System.in);
         Converter converter = new Converter();
         MineField myMineField;
