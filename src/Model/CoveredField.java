@@ -24,8 +24,8 @@ public class CoveredField {
         }
     }
 
-    public char getSpot(final int theX, final int theY) {
-        return myField[theX][theY];
+    public char getSpot(final int theN, final int theM) {
+        return myField[theN][theM];
     }
 
     public int getN() {

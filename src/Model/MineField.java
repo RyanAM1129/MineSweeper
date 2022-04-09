@@ -8,8 +8,11 @@ public class MineField{
     public MineField(final int theN, final int theM) {
         myN = theN;
         myM = theM;
-
+        myCoveredField = new CoveredField(myN, myM);
+        mySweptField = new SweptField(myCoveredField);
+        for (int i = 0; i < myN; i++) {
+            System.out.println(mySweptField.rowToString(i));
+        }
     }
 
-    private void buildField(final char[][] theField) {}
 }
