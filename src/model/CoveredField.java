@@ -65,4 +65,13 @@ public class CoveredField {
     public int getM() {
         return myM;
     }
+
+    /**
+     * Returns the 2-dimensional array representing the minefield.
+     *
+     * @return the 2-dimensional array.
+     */
+    public char[][] getField() {
+        return myField;
+    }
 }

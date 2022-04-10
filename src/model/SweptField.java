@@ -12,7 +12,7 @@ public class SweptField {
     /**
     * 2-Dimensional array representation of the swept minefield.
     */
-    private final int[][] mySweptField;
+    private final char[][] mySweptField;
 
     /**
      * Constructor that creates a Swept minefield from a given
@@ -22,71 +22,79 @@ public class SweptField {
     public SweptField(final CoveredField theCoveredField) {
         myN = theCoveredField.getN();
         myM = theCoveredField.getM();
-        mySweptField = new int[myN][myM];
+        mySweptField = theCoveredField.getField();
 
         for (int i = 0; i < myN; i++) {
             for (int j = 0; j < myM; j++) {
                 //i is the row and j is the column
-                if (j == 0 && i == 0) {
-                    //Top-Left Corner
-                    checkRight(i, j, theCoveredField);
-                    checkBottomRight(i, j, theCoveredField);
-                    checkBottom(i, j, theCoveredField);
-                } else if (i == 0 && j == (myM - 1)) {
-                    //Top-Right Corner
-                    checkLeft(i, j, theCoveredField);
-                    checkBottomLeft(i, j, theCoveredField);
-                    checkBottom(i, j, theCoveredField);
-                } else if (i == (myN - 1) && j == 0) {
-                    //Bottom-Left Corner
-                    checkTop(i, j, theCoveredField);
-                    checkTopRight(i, j, theCoveredField);
-                    checkRight(i, j, theCoveredField);
-                } else if (i == (myN - 1) && j == (myM - 1)) {
-                    //Bottom-Right Corner
-                    checkLeft(i, j, theCoveredField);
-                    checkTopLeft(i, j, theCoveredField);
-                    checkTop(i, j, theCoveredField);
-                } else if (i == 0) {
-                    //Top Row
-                    checkLeft(i, j, theCoveredField);
-                    checkBottomLeft(i, j, theCoveredField);
-                    checkBottom(i, j, theCoveredField);
-                    checkBottomRight(i, j, theCoveredField);
-                    checkRight(i, j, theCoveredField);
-                } else if (j == 0) {
-                    //Left Column
-                    checkTop(i, j, theCoveredField);
-                    checkTopRight(i, j, theCoveredField);
-                    checkRight(i, j, theCoveredField);
-                    checkBottomRight(i, j, theCoveredField);
-                    checkBottom(i, j, theCoveredField);
-                } else if (j == (myM - 1)) {
-                    //Right Column
-                    checkTop(i, j, theCoveredField);
-                    checkTopLeft(i, j, theCoveredField);
-                    checkLeft(i, j, theCoveredField);
-                    checkBottomLeft(i, j, theCoveredField);
-                    checkBottom(i, j, theCoveredField);
-                } else if (i == (myN - 1)) {
-                    //Bottom Row
-                    checkLeft(i, j, theCoveredField);
-                    checkTopLeft(i, j, theCoveredField);
-                    checkTop(i, j, theCoveredField);
-                    checkTopRight(i, j, theCoveredField);
-                    checkRight(i, j, theCoveredField);
-                } else {
-                    //Everything Else
-                    checkTopLeft(i, j, theCoveredField);
-                    checkTop(i, j, theCoveredField);
-                    checkTopRight(i, j, theCoveredField);
-                    checkRight(i, j, theCoveredField);
-                    checkBottomRight(i, j, theCoveredField);
-                    checkBottom(i, j, theCoveredField);
-                    checkBottomLeft(i, j, theCoveredField);
-                    checkLeft(i, j, theCoveredField);
+                if(theCoveredField.getSpot(i, j) != '*') {
+                    mySweptField[i][j] = '0';
+                    mineSweep(i, j, theCoveredField);
                 }
             }
+        }
+    }
+
+    private void mineSweep(final int theN, final int theM,
+                           final CoveredField theCoveredField) {
+        if (theN == 0 && theM == 0) {
+            //Top-Left Corner
+            checkRight(theN, theM, theCoveredField);
+            checkBottomRight(theN, theM, theCoveredField);
+            checkBottom(theN, theM, theCoveredField);
+        } else if (theN == 0 && theM == (myM - 1)) {
+            //Top-Right Corner
+            checkLeft(theN, theM, theCoveredField);
+            checkBottomLeft(theN, theM, theCoveredField);
+            checkBottom(theN, theM, theCoveredField);
+        } else if (theN == (myN - 1) && theM == 0) {
+            //Bottom-Left Corner
+            checkTop(theN, theM, theCoveredField);
+            checkTopRight(theN, theM, theCoveredField);
+            checkRight(theN, theM, theCoveredField);
+        } else if (theN == (myN - 1) && theM == (myM - 1)) {
+            //Bottom-Right Corner
+            checkLeft(theN, theM, theCoveredField);
+            checkTopLeft(theN, theM, theCoveredField);
+            checkTop(theN, theM, theCoveredField);
+        } else if (theN == 0) {
+            //Top Row
+            checkLeft(theN, theM, theCoveredField);
+            checkBottomLeft(theN, theM, theCoveredField);
+            checkBottom(theN, theM, theCoveredField);
+            checkBottomRight(theN, theM, theCoveredField);
+            checkRight(theN, theM, theCoveredField);
+        } else if (theM == 0) {
+            //Left Column
+            checkTop(theN, theM, theCoveredField);
+            checkTopRight(theN, theM, theCoveredField);
+            checkRight(theN, theM, theCoveredField);
+            checkBottomRight(theN, theM, theCoveredField);
+            checkBottom(theN, theM, theCoveredField);
+        } else if (theM == (myM - 1)) {
+            //Right Column
+            checkTop(theN, theM, theCoveredField);
+            checkTopLeft(theN, theM, theCoveredField);
+            checkLeft(theN, theM, theCoveredField);
+            checkBottomLeft(theN, theM, theCoveredField);
+            checkBottom(theN, theM, theCoveredField);
+        } else if (theN == (myN - 1)) {
+            //Bottom Row
+            checkLeft(theN, theM, theCoveredField);
+            checkTopLeft(theN, theM, theCoveredField);
+            checkTop(theN, theM, theCoveredField);
+            checkTopRight(theN, theM, theCoveredField);
+            checkRight(theN, theM, theCoveredField);
+        } else {
+            //Everything Else
+            checkTopLeft(theN, theM, theCoveredField);
+            checkTop(theN, theM, theCoveredField);
+            checkTopRight(theN, theM, theCoveredField);
+            checkRight(theN, theM, theCoveredField);
+            checkBottomRight(theN, theM, theCoveredField);
+            checkBottom(theN, theM, theCoveredField);
+            checkBottomLeft(theN, theM, theCoveredField);
+            checkLeft(theN, theM, theCoveredField);
         }
     }
 
@@ -217,7 +225,7 @@ public class SweptField {
      */
     public String rowToString(final int theN) {
         StringBuilder myStringBuilder = new StringBuilder();
-        for (int myValue : mySweptField[theN]) {
+        for (char myValue : mySweptField[theN]) {
             myStringBuilder.append(myValue);
         }
         return myStringBuilder.toString();
