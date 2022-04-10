@@ -18,17 +18,21 @@ public class CoveredField {
      * of the Covered Mine Field.
      */
     private final char[][] myField;
+    /**
+     * Ensures all input gets read from command line argument.
+     */
+    private final Scanner myConsole;
 
     /**
      * Constructor for CoveredField using given size.
      * @param theN the number of rows.
      * @param theM the number of columns.
      */
-    public CoveredField(final int theN, final int theM) {
+    public CoveredField(final int theN, final int theM, final Scanner theConsole) {
         myN = theN;
         myM = theM;
         myField = new char[myN][myM];
-        Scanner myConsole = new Scanner(System.in);
+        myConsole = theConsole;
         String myCurrentLine;
         char[] myCurrentRow;
         Converter myConverter = new Converter();

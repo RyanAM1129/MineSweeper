@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Scanner;
+
 public class MineField {
     /**
      * The number of rows.
@@ -23,10 +25,10 @@ public class MineField {
      * @param theN the number of rows.
      * @param theM the number of columns.
      */
-    public MineField(final int theN, final int theM) {
+    public MineField(final int theN, final int theM, final Scanner theConsole) {
         myN = theN;
         myM = theM;
-        myCoveredField = new CoveredField(myN, myM);
+        myCoveredField = new CoveredField(myN, myM, theConsole);
         mySweptField = new SweptField(myCoveredField);
         for (int i = 0; i < myN; i++) {
             System.out.println(mySweptField.rowToString(i));
