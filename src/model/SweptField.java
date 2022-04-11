@@ -37,6 +37,7 @@ public class SweptField {
 
     private void mineSweep(final int theN, final int theM,
                            final CoveredField theCoveredField) {
+        //This does not work for a 1x1 array, Need to fix
         if (theN == 0 && theM == 0) {
             //Top-Left Corner
             checkRight(theN, theM, theCoveredField);

@@ -34,6 +34,7 @@ public final class Main {
             myMineField = new MineField(theNAndM[0], theNAndM[1], console);
             myCurrentLine = console.nextLine();
             theNAndM = converter.convertFieldSize(myCurrentLine);
+            System.out.println();
         }
     }
 }
