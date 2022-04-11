@@ -109,7 +109,7 @@ public class SweptField {
      */
     private void checkTop(final int theN, final int theM,
                           final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN - 1, theM) == '*') {
+        if (theN - 1 >= 0 && theCoveredField.getSpot(theN - 1, theM) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -124,7 +124,8 @@ public class SweptField {
      */
     private void checkBottom(final int theN, final int theM,
                           final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN + 1, theM) == '*') {
+        if (theN + 1 < theCoveredField.getN()
+                && theCoveredField.getSpot(theN + 1, theM) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -139,7 +140,8 @@ public class SweptField {
      */
     private void checkRight(final int theN, final int theM,
                              final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN, theM + 1) == '*') {
+        if (theM + 1 < theCoveredField.getM()
+                && theCoveredField.getSpot(theN, theM + 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -154,7 +156,7 @@ public class SweptField {
      */
     private void checkLeft(final int theN, final int theM,
                             final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN, theM - 1) == '*') {
+        if (theM -1 >= 0 && theCoveredField.getSpot(theN, theM - 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -169,7 +171,8 @@ public class SweptField {
      */
     private void checkTopLeft(final int theN, final int theM,
                            final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN - 1, theM - 1) == '*') {
+        if ((theN - 1 >= 0 && theM - 1 >= 0)
+                && theCoveredField.getSpot(theN - 1, theM - 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -184,7 +187,8 @@ public class SweptField {
      */
     private void checkTopRight(final int theN, final int theM,
                               final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN - 1, theM + 1) == '*') {
+        if ((theN >= 0 && theM + 1 < theCoveredField.getM())
+                && theCoveredField.getSpot(theN - 1, theM + 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -199,7 +203,8 @@ public class SweptField {
      */
     private void checkBottomRight(final int theN, final int theM,
                                final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN + 1, theM + 1) == '*') {
+        if ((theN + 1 < theCoveredField.getN() && theM + 1 < theCoveredField.getM())
+                && theCoveredField.getSpot(theN + 1, theM + 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -214,7 +219,8 @@ public class SweptField {
      */
     private void checkBottomLeft(final int theN, final int theM,
                                   final CoveredField theCoveredField) {
-        if (theCoveredField.getSpot(theN + 1, theM - 1) == '*') {
+        if ((theN + 1 < theCoveredField.getN() && theM - 1 > 0)
+                && theCoveredField.getSpot(theN + 1, theM - 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
