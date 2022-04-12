@@ -1,17 +1,21 @@
 package view;
 
 import controller.Converter;
-import model.MineField;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import model.MineField;
 
+/**
+ * The main class (contains main method).
+ */
 public final class Main {
     /**
      * No arg Constructor.
      */
-    private Main() { }
+    private Main() {
+    }
+
     /**
      * Main method for MineSweeper.
      * Need to fix line 35 for second iteration.
@@ -20,9 +24,9 @@ public final class Main {
      */
     public static void main(final String[] args) throws FileNotFoundException {
         Scanner console;
-        Converter converter = new Converter();
+        final Converter converter = new Converter();
         MineField myMineField;
-        if (args.length == 1){
+        if (args.length == 1) {
             console = new Scanner(new File(args[0]));
         } else {
             console = new Scanner(System.in);

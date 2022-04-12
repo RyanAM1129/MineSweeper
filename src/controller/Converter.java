@@ -1,10 +1,9 @@
 package controller;
 
+/**
+ * A class containing all conversion methods.
+ */
 public class Converter {
-    /**
-     * Default Constructor.
-     */
-    public Converter() { }
     /**
      * Converts a given Field Size String into two int
      * values and returns them as an array.
@@ -12,23 +11,23 @@ public class Converter {
      * @return the array containing the N and M values respectively.
      */
     public int[] convertFieldSize(final String theFieldSize) {
-        final int myN;
-        final int myM;
+        final int theN;
+        final int theM;
         String mySubString1 = "-1";
         String mySubString2 = "-1";
 
         for (int i = 0; i < theFieldSize.length(); i++) {
-            if(theFieldSize.charAt(i) == ' ') {
+            if (theFieldSize.charAt(i) == ' ') {
                 mySubString1 = theFieldSize.substring(0, i);
                 mySubString2 = theFieldSize.substring(i + 1);
                 break;
             }
         }
 
-        myN = Integer.parseInt(mySubString1);
-        myM = Integer.parseInt(mySubString2);
+        theN = Integer.parseInt(mySubString1);
+        theM = Integer.parseInt(mySubString2);
 
-        return new int[] {myN, myM};
+        return new int[] {theN, theM};
     }
 
     /**

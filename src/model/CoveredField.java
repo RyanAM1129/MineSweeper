@@ -4,6 +4,9 @@ import controller.Converter;
 
 import java.util.Scanner;
 
+/**
+ * ADT representing a minefield before it has been "swept".
+ */
 public class CoveredField {
     /**
      * The number of rows.
@@ -25,17 +28,20 @@ public class CoveredField {
 
     /**
      * Constructor for CoveredField using given size.
+     *
      * @param theN the number of rows.
      * @param theM the number of columns.
+     * @param theConsole the given input stream.
      */
-    public CoveredField(final int theN, final int theM, final Scanner theConsole) {
+    public CoveredField(final int theN, final int theM,
+                        final Scanner theConsole) {
         myN = theN;
         myM = theM;
         myField = new char[myN][myM];
         myConsole = theConsole;
         String myCurrentLine;
         char[] myCurrentRow;
-        Converter myConverter = new Converter();
+        final Converter myConverter = new Converter();
 
         for (int i = 0; i < theN; i++) {
             myCurrentLine = myConsole.nextLine();
@@ -76,6 +82,6 @@ public class CoveredField {
      * @return the 2-dimensional array.
      */
     public char[][] getField() {
-        return myField;
+        return myField; //Best practice would be to return a copy.
     }
 }

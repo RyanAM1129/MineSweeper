@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * ADT representing a minefield that has been "swept".
+ */
 public class SweptField {
     /**
      * The number of rows.
@@ -27,7 +30,7 @@ public class SweptField {
         for (int i = 0; i < myN; i++) {
             for (int j = 0; j < myM; j++) {
                 //i is the row and j is the column
-                if(theCoveredField.getSpot(i, j) != '*') {
+                if (theCoveredField.getSpot(i, j) != '*') {
                     mySweptField[i][j] = '0';
                     mineSweep(i, j, theCoveredField);
                 }
@@ -35,6 +38,14 @@ public class SweptField {
         }
     }
 
+    /**
+     * Given a 'n' and 'm' value, you check all locations adjacent
+     * to the spot in a given CoveredField.
+     *
+     * @param theN the row index.
+     * @param theM  the column index.
+     * @param theCoveredField the covered field being evaluated.
+     */
     private void mineSweep(final int theN, final int theM,
                            final CoveredField theCoveredField) {
         //This does not work for a 1x1 array, Need to fix
@@ -72,14 +83,14 @@ public class SweptField {
             checkRight(theN, theM, theCoveredField);
             checkBottomRight(theN, theM, theCoveredField);
             checkBottom(theN, theM, theCoveredField);
-        } else if (theM == (myM - 1)) {
+        } else if (theM == myM - 1) {
             //Right Column
             checkTop(theN, theM, theCoveredField);
             checkTopLeft(theN, theM, theCoveredField);
             checkLeft(theN, theM, theCoveredField);
             checkBottomLeft(theN, theM, theCoveredField);
             checkBottom(theN, theM, theCoveredField);
-        } else if (theN == (myN - 1)) {
+        } else if (theN == myN - 1) {
             //Bottom Row
             checkLeft(theN, theM, theCoveredField);
             checkTopLeft(theN, theM, theCoveredField);
@@ -156,7 +167,7 @@ public class SweptField {
      */
     private void checkLeft(final int theN, final int theM,
                             final CoveredField theCoveredField) {
-        if (theM -1 >= 0 && theCoveredField.getSpot(theN, theM - 1) == '*') {
+        if (theM - 1 >= 0 && theCoveredField.getSpot(theN, theM - 1) == '*') {
             mySweptField[theN][theM]++;
         }
     }
@@ -171,7 +182,7 @@ public class SweptField {
      */
     private void checkTopLeft(final int theN, final int theM,
                            final CoveredField theCoveredField) {
-        if ((theN - 1 >= 0 && theM - 1 >= 0)
+        if (theN - 1 >= 0 && theM - 1 >= 0
                 && theCoveredField.getSpot(theN - 1, theM - 1) == '*') {
             mySweptField[theN][theM]++;
         }
@@ -187,7 +198,7 @@ public class SweptField {
      */
     private void checkTopRight(final int theN, final int theM,
                               final CoveredField theCoveredField) {
-        if ((theN >= 0 && theM + 1 < theCoveredField.getM())
+        if (theN >= 0 && theM + 1 < theCoveredField.getM()
                 && theCoveredField.getSpot(theN - 1, theM + 1) == '*') {
             mySweptField[theN][theM]++;
         }
@@ -203,7 +214,8 @@ public class SweptField {
      */
     private void checkBottomRight(final int theN, final int theM,
                                final CoveredField theCoveredField) {
-        if ((theN + 1 < theCoveredField.getN() && theM + 1 < theCoveredField.getM())
+        if (theN + 1 < theCoveredField.getN()
+                && theM + 1 < theCoveredField.getM()
                 && theCoveredField.getSpot(theN + 1, theM + 1) == '*') {
             mySweptField[theN][theM]++;
         }
@@ -219,7 +231,7 @@ public class SweptField {
      */
     private void checkBottomLeft(final int theN, final int theM,
                                   final CoveredField theCoveredField) {
-        if ((theN + 1 < theCoveredField.getN() && theM - 1 > 0)
+        if (theN + 1 < theCoveredField.getN() && theM - 1 >= 0
                 && theCoveredField.getSpot(theN + 1, theM - 1) == '*') {
             mySweptField[theN][theM]++;
         }
@@ -231,8 +243,8 @@ public class SweptField {
      * @return String representation of given row.
      */
     public String rowToString(final int theN) {
-        StringBuilder myStringBuilder = new StringBuilder();
-        for (char myValue : mySweptField[theN]) {
+        final StringBuilder myStringBuilder = new StringBuilder();
+        for (final char myValue : mySweptField[theN]) {
             myStringBuilder.append(myValue);
         }
         return myStringBuilder.toString();

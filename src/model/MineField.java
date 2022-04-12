@@ -26,8 +26,10 @@ public class MineField {
 
     /**
      * Builds a minefield using a given size.
+     *
      * @param theN the number of rows.
      * @param theM the number of columns.
+     * @param theConsole the given input stream.
      */
     public MineField(final int theN, final int theM, final Scanner theConsole) {
         myCount++;
